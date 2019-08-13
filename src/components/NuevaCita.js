@@ -11,10 +11,14 @@ class NuevaCita extends Component {
                 fecha: '',
                 hora: '',
                 sintomas: ''
-            }
+            },
+            error: false
         }
     }
 
+    /**
+     * Metodo que controlo los datos del form y rellena el state de la cita
+     */
     handleChange = (e) => {
         console.log(e.target.name + ' : ' + e.target.value);
         //indicamos el vlaor introducido por el usuario, recordar que state es inmutable y siempre hay que hacer una copia
@@ -26,6 +30,26 @@ class NuevaCita extends Component {
         })
     }
 
+    /**
+     * El usuario pulsa el botón enviar
+     */
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        //obtener los valores del state
+        const {mascota, propietario, fecha, hora, sintomas} = this.state.cita;
+
+        //validación que todos los campos este llenos
+        if(mascota === '' || propietario === '' || fecha === '' || hora === '' || sintomas === '') {
+            this.setState({error:true});
+
+            //evitamos que se siga ejecutando
+            return;
+        }
+
+        //agremamos la cita al stete padre (en este caso a App)
+    }
+
     render() {
         return (
             <div className="card mt-5">
@@ -33,7 +57,9 @@ class NuevaCita extends Component {
                     <h2 className="card-title text-center mb-5">
                         Rellenar formulario para una nueva cita
                     </h2>
-                    <form>
+                    <form
+                        onSubmit={this.handleSubmit}
+                    >
                         <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">
                                 Nombre mascota
