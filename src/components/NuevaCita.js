@@ -5,8 +5,25 @@ class NuevaCita extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            cita: {
+                mascota: '',
+                propietario: '',
+                fecha: '',
+                hora: '',
+                sintomas: ''
+            }
         }
+    }
+
+    handleChange = (e) => {
+        console.log(e.target.name + ' : ' + e.target.value);
+        //indicamos el vlaor introducido por el usuario, recordar que state es inmutable y siempre hay que hacer una copia
+        this.setState({
+            cita: {
+                ...this.state.cita,
+                [e.target.name] : e.target.value
+            }
+        })
     }
 
     render() {
@@ -27,6 +44,8 @@ class NuevaCita extends Component {
                                     className="form-control"
                                     placeholder="Nombre mascota"
                                     name="mascota"
+                                    onChange={this.handleChange}
+                                    value={this.state.cita.mascota}
                                 />
                             </div>
                         </div> {/*form-group*/}
@@ -41,6 +60,8 @@ class NuevaCita extends Component {
                                     className="form-control"
                                     placeholder="Nombre propietario"
                                     name="propietario"
+                                    onChange={this.handleChange}
+                                    value={this.state.cita.propietario}
                                 />
                             </div>
                         </div> {/*form-group*/}
@@ -55,6 +76,8 @@ class NuevaCita extends Component {
                                     className="form-control"
                                     placeholder="Fecha"
                                     name="fecha"
+                                    onChange={this.handleChange}
+                                    value={this.state.cita.fecha}
                                 />
                             </div>
 
@@ -67,6 +90,8 @@ class NuevaCita extends Component {
                                     className="form-control"
                                     placeholder="Hora"
                                     name="hora"
+                                    onChange={this.handleChange}
+                                    value={this.state.cita.hora}
                                 />
                             </div>
                         </div> {/*form-group*/}
@@ -81,6 +106,8 @@ class NuevaCita extends Component {
                                     className="form-control"
                                     placeholder="Descripción de los síntomas"
                                     name="sintomas"
+                                    onChange={this.handleChange}
+                                    value={this.state.cita.sintomas}
                                 ></textarea>
                             </div>
                         </div> {/*form-group*/}
