@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 
 class NuevaCita extends Component {
 
@@ -20,7 +21,6 @@ class NuevaCita extends Component {
      * Metodo que controlo los datos del form y rellena el state de la cita
      */
     handleChange = (e) => {
-        console.log(e.target.name + ' : ' + e.target.value);
         //indicamos el vlaor introducido por el usuario, recordar que state es inmutable y siempre hay que hacer una copia
         this.setState({
             cita: {
@@ -47,7 +47,12 @@ class NuevaCita extends Component {
             return;
         }
 
+        //generar objeto con los datos
+        const nuevaCita = {...this.state.cita};
+        nuevaCita.id = uuid();
+
         //agremamos la cita al stete padre (en este caso a App)
+        this.props.crearNuevaCita(nuevaCita);
     }
 
     render() {
