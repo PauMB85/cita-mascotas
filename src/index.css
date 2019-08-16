@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.listas-citas .media {
+  border-bottom: 1px solid #e1e1e1;
+  padding-bottom: 3rem;
+}
+
+.listas-citas .media:last-of-type{
+  border-bottom: 0;
+}
+
+.listas-citas .media-body p {
+  margin: 0;
+}
+
+.listas-citas .media-body button {
+  margin-top: 1rem !important;
+}
+
+.listas-citas .media-body span {
+  font-weight: bold;
+}

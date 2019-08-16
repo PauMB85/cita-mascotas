@@ -59,7 +59,7 @@ class NuevaCita extends Component {
         this.props.crearNuevaCita(nuevaCita);
 
         //reiniciamos el state con el state inicial
-        this.setState = { ...stateInicial }
+        this.setState({ ...stateInicial });
     }
 
     render() {
