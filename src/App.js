@@ -13,6 +13,21 @@ class App extends Component{
     };
   }
 
+  //cuando la aplicación esta cargando
+  componentDidMount() {
+    const citasLS = localStorage.getItem('citas');
+    if(citasLS){
+      this.setState({
+        citas: JSON.parse(citasLS)
+      });
+    }
+  }
+
+  // cuando agregamos o eliminamos una cita
+  componentDidUpdate() {
+    localStorage.setItem('citas', JSON.stringify(this.state.citas));
+  }
+
   crearNuevaCita = datos => {
     console.log(datos);
     //copiar el state actual
