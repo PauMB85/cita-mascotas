@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
 
+const stateInicial = {
+    cita: {
+        mascota: '',
+        propietario: '',
+        fecha: '',
+        hora: '',
+        sintomas: ''
+    },
+    error: false
+}
+
 class NuevaCita extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            cita: {
-                mascota: '',
-                propietario: '',
-                fecha: '',
-                hora: '',
-                sintomas: ''
-            },
-            error: false
+            ...stateInicial
         }
     }
 
@@ -53,6 +57,9 @@ class NuevaCita extends Component {
 
         //agremamos la cita al stete padre (en este caso a App)
         this.props.crearNuevaCita(nuevaCita);
+
+        //reiniciamos el state con el state inicial
+        this.setState = { ...stateInicial }
     }
 
     render() {
