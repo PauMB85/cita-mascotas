@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cita = ({cita}) => {
+const Cita = ({cita, eliminarCita}) => {
     return (
         <div className="media mt-3">
             <div className="media-body">
@@ -8,7 +8,7 @@ const Cita = ({cita}) => {
                     {cita.mascota}
                 </h3>
                 <p className="card-text">
-                    <span>Nombre dueño:</span> {cita.propietarios}
+                    <span>Nombre dueño:</span> {cita.propietario}
                 </p>
                 <p className="card-text">
                     <span>Fecha:</span> {cita.fecha}
@@ -22,6 +22,13 @@ const Cita = ({cita}) => {
                 <p className="card-text">
                     {cita.sintomas}
                 </p>
+
+                <button
+                    className="btn btn-danger"
+                    onClick={() => eliminarCita(cita.id)}
+                >
+                    Borrar
+                </button>
             </div>
         </div>
     );
